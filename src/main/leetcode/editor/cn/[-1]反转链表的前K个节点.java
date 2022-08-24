@@ -1,5 +1,5 @@
 class Solution {
-    ListNode newHead = null
+    ListNode newHead = null;
     public ListNode reverseListNode(ListNode head, int n) {
         if(n == 1) {
             /**
