@@ -1,18 +1,17 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class NumArray {
-    int[] preNums = null;
 
+    int[] preSum = null;
     public NumArray(int[] nums) {
-        preNums = new int[nums.length + 1];
-        preNums[0] = 0;
-        for (int i = 1; i < preNums.length; i++) {
-            preNums[i] = preNums[i - 1] + nums[i - 1];
+        preSum = new int[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            preSum[i + 1] = nums[i] + preSum[i];
         }
     }
 
     public int sumRange(int left, int right) {
-        return preNums[right + 1] - preNums[left];
+        return preSum[right + 1] - preSum[left];
     }
 }
 
