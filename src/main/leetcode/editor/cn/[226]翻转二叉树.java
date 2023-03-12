@@ -28,18 +28,27 @@ public class TreeNode {
     }
 }
 class Solution {
-    private int max = 0;
-    public int diameterOfBinaryTree(TreeNode root) {
-        maxD(root);
-        return max;
+    public TreeNode invertTree(TreeNode root) {
+//        traverse(root);
+        return invert(root);
     }
 
-    private int maxD(TreeNode root) {
-        if (root == null) return 0;
-        int leftMax = maxD(root.left);
-        int rightMax = maxD(root.right);
-        max = Math.max(max, leftMax + rightMax);
-        return 1 + Math.max(leftMax, rightMax);
+    public TreeNode invert(TreeNode root) {
+        if (root == null) return null;
+        TreeNode left = invert(root.left);
+        TreeNode right = invert(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+
+    public void traverse(TreeNode root) {
+        if (root == null) return;
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        traverse(root.left);
+        traverse(root.right);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
