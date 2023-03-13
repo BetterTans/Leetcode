@@ -16,7 +16,6 @@
  * }
  */
 class Solution {
-
 //    public class TreeNode {
 //        int val;
 //        TreeNode left;
@@ -29,24 +28,23 @@ class Solution {
 //            this.right = right;
 //        }
 //    }
-    int pos = 0;
-    int res = 0;
-    public int kthSmallest(TreeNode root, int k) {
-        traverse(root, k);
-        return res;
+    public int sumNumbers(TreeNode root) {
+        traverse(root);
+        return sum;
+    }
+    StringBuilder sb = new StringBuilder();
+    int sum = 0;
+    public void traverse(TreeNode root) {
+        if (root == null) return;
+        sb.append(root.val);
+        if (root.left == null && root.right == null) {
+            sum += Integer.parseInt(sb.toString());
+        }
+        traverse(root.left);
+        traverse(root.right);
+        sb.deleteCharAt(sb.length() - 1);
     }
 
-    public void traverse(TreeNode node, int k) {
-        if (node == null) {
-            return;
-        }
-        traverse(node.left, k);
-        pos++;
-        if (pos == k ) {
-            res = node.val;
-            return;
-        }
-        traverse(node.right, k);
-    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
