@@ -3,3 +3,5 @@
 /target/classes/
 /src/main/leetcode/editor/cn/doc/solution/
 !/.idea/
+/.idea/Leetcode.iml
+/.idea/modules.xml
